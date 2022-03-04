@@ -21,7 +21,6 @@ video{
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(255, 255, 255, 0.726);
-    height: 70vh;
 }
 
 @media screen and (max-width: 600px){
@@ -78,6 +77,41 @@ video{
 
 }
 
+#apps{
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.app-link{
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.479);
+    transition: transform  0.2s;
+    
+}
+
+.app-link:hover{
+    transform: scale(110%);
+}
+
+#app-photo{
+    width: 130px; 
+    height: 130px;
+    margin-bottom: 10px;
+}
+
+.rounded{
+    border-radius: 50%;
+
+    background-color: black;
+}
 a{
     transition: transform .3s;
 }
@@ -91,4 +125,8 @@ a:hover{
 }
 a:visited{
     color: rgba(255, 255, 255, 0.7);
+}
+
+.flex-vertical{
+    flex-direction: column;
 }

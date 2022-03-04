@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./chat.js"></script>
+</head>
+
+<body>
+    <div class="container flex-vertical">
+        <h1>Non-Social Chat App</h1>
+        <div id="chat-area">
+        </div>
+        <div id="input">
+            <input type="text" id="nickname-box" placeholder="Nicname" onkeypress="return event.charCode != 32;">
+            <input type="text" id="message-box" placeholder="Message here...">
+            <button value="->" id="send-btn" onclick="sendMessage()">-></button>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+<style>
+    * {
+        overflow-x: hidden;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    @media screen and (max-width: 600px) {
+        #chat-area {
+            height: 100%;
+            max-height: none;
+            width: 100%;
+
+        }
+
+        .container{
+            height: 100%;
+        }
+
+    }
+
+    #chat-area {
+        display: flex;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: #0000ff;
+        color: green;
+        align-items: flex-end;
+        white-space: pre-wrap;
+
+        height: 750px;
+        max-height: 450px;
+        width: 100%;
+        max-width: 850px;
+    }
+
+    #input {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 50px;
+        max-width: 850px;
+    }
+
+    input,
+    button {
+        background-color: #0084ff;
+        border: 0px;
+        margin: 1px;
+        font-weight: bold;
+        padding-left: 15px;
+    }
+
+    input::placeholder {
+        color: #00b7ff;
+    }
+
+    #message-box {
+        width: 100%;
+
+    }
+
+    #send-btn {
+        width: 50px;
+    }
+</style>
+
+</html>
