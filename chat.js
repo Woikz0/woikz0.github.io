@@ -51,6 +51,7 @@ function sendMessage() {
     if(spamCount > 5) {
         banned = true;
         alert("anani sikim");
+        write("Client", "User " + nickname + " banned.");
     }
 
     if (nickname !== "" && banned === false) {
