@@ -6,6 +6,7 @@ const names = [];
 var currentcolor = null;
 
 
+
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         sendMessage();
