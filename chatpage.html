@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./chat.js"></script>
+    <script src="./chat.js" type="module"></script>
 </head>
 
 <body>
@@ -18,11 +18,9 @@
         <div id="input">
             <input type="text" id="nickname-box" placeholder="Nicname" onkeypress="return event.charCode != 32;">
             <input type="text" id="message-box" placeholder="Message here...">
-            <button value="->" id="send-btn" onclick="sendMessage()">-></button>
+            <button value="->" id="send-btn">-></button>
 
         </div>
-
-
     </div>
 
 
@@ -38,10 +36,9 @@
             height: 100%;
             max-height: none;
             width: 100%;
-
         }
 
-        .container{
+        .container {
             height: 100%;
         }
 
@@ -52,7 +49,7 @@
         box-sizing: border-box;
         padding: 10px;
         background-color: #0000ff;
-        color: green;
+        color: rgb(3, 226, 3);
         align-items: flex-end;
         white-space: pre-wrap;
 
@@ -60,6 +57,25 @@
         max-height: 450px;
         width: 100%;
         max-width: 850px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+
+    /* Designing for scroll-bar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #0000ff;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: rgb(59, 128, 255);
+        border-radius: 5px;
     }
 
     #input {
