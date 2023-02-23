@@ -26,11 +26,10 @@ function OnDocLoad() {
 
     color = Messager.GetRandomColor();
 
-    $.getJSON("https://api.ipify.org?format=json", function(data) {
-    ip = data.ip;
+    $.getJSON("https://api.ipify.org?format=json", function (data) {
 
-    Notification.requestPermission();
-})
+        Notification.requestPermission();
+    })
 }
 
 document.addEventListener("keydown", (e) => {
@@ -65,7 +64,6 @@ function timer() {
 }
 
 function sendMessage(nickname, msg, color) {
-
     if (nickname == '' || banned === true) return
 
     var diff = timerr - previusMsgTime;
@@ -87,29 +85,26 @@ function sendMessage(nickname, msg, color) {
     console.log(previusMsgTime);
 }
 
-var ref = database.ref(database.db, 'Msgs/');
-
-    ref.onC
+const starCountRef = database.ref(database.db, 'Msgs/');
+database.onValue(starCountRef, (snapshot) => {
+    getMessages();
+});
 
 function getMessages() {
     const dbref = database.ref(database.db);
-    const msgsRef = database.child(dbref, "Msgs/");
 
-    database.get(dbref, msgsRef).then((snapshot) => {
+    database.get(database.child(dbref, 'Msgs/')).then((snapshot) => {
         var msgs = Object.entries(snapshot.val());
 
         Messager.ClearChat();
 
-        Object.entries(msgs[0][1]).forEach(element => {
-            const message = element[1];
-            var highlight = false;
-            
-            // const za = database.child(dbref, 'Msgs/' + element[0])
-            // console.log(za);
+        var message;
+        msgs.forEach(element => {
+            message = element[1];
 
-            if(message.Content.includes("@"+nickname)) {
-                highlight = true;
-            }
+            var highlight = false;
+
+            if(message.Content.includes("@" + nickname)) highlight = true;
 
             Messager.AddMessageSpan(message.UserName, message.Content, message.Color, highlight);
         });
@@ -118,9 +113,12 @@ function getMessages() {
             firstLoad = true;
             setScrollEnd();
         }
-        var lastIndex = Object.entries(msgs[0][1]).length - 1;
 
-        if (ChatEvents((Object.entries(msgs[0][1])[lastIndex][1].Content)) == false) {
+        if (msgs[msgs.length - 1][1].Content.includes("@" + nickname)) {
+            Notify.Notify(message);
+        }
+
+        if (ChatEvents(msgs[msgs.length - 1][1].Content) == false) {
 
             document.getElementById("chat-area").style.backgroundImage = "none";
         }

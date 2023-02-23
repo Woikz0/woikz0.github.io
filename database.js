@@ -23,9 +23,9 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 
-import { getDatabase, ref, set, child, update, remove, get, push}
+import { getDatabase, ref, set, child, update, remove, get, push, onValue}
     from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
 
 const db = getDatabase();
 
-export default {db, set, ref, get, child, push};
+export default {db, set, ref, get, child, push, onValue};
