@@ -1,6 +1,5 @@
 import database from './database.js'
 
-
 const sendBtn = document.getElementById("send-btn");
 const names = [];
 var currentcolor = null;
@@ -9,19 +8,22 @@ var timerr = 0;
 
 var banned = false;
 
-var previusMsgTime = 0; 
+var previusMsgTime = 0;
 var spamCount = 0;
-
-
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-        sendMessage();
+        var nickname = document.getElementById("nickname-box").value;
+        var msg = document.getElementById("message-box").value;
+        sendMessage(nickname, msg);
     }
 });
 
 document.getElementById("send-btn").addEventListener("click", (e) => {
-    sendMessage();
+
+    var nickname = document.getElementById("nickname-box").value;
+    var msg = document.getElementById("message-box").value;
+    sendMessage(nickname, msg);
 })
 
 document.onload = OnDocLoad();
@@ -32,26 +34,22 @@ function OnDocLoad() {
     window.setInterval(timer, 100);
 }
 
-function timer()
-{
+function timer() {
     timerr = timerr + 0.1;
 }
 
-function sendMessage() {
-    var nickname = document.getElementById("nickname-box").value;
-    var msg = document.getElementById("message-box").value;
-
+function sendMessage(nickname, msg) {
     var diff = timerr - previusMsgTime;
 
     if (diff < 1) {
         spamCount++;
         console.log(spamCount);
-    }
+        if (spamCount > 5) {
+            banned = true;
+            sendToDatabase("Client", "User " + nickname + " kicked.");
+    
+        }
 
-    if(spamCount > 5) {
-        banned = true;
-        alert("anani sikim");
-        write("Client", "User " + nickname + " banned.");
     }
 
     if (nickname !== "" && banned === false) {
@@ -69,8 +67,7 @@ function write(nick, msg) {
 
 }
 
-function clearChat()
-{
+function clearChat() {
     document.getElementById("chat-area").textContent = "";
 }
 
