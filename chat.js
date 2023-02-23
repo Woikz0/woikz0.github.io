@@ -12,11 +12,15 @@ var banned = false;
 var previusMsgTime = 0;
 var spamCount = 0;
 
+var firstLoad = false;
+
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         var nickname = document.getElementById("nickname-box").value;
         var msg = document.getElementById("message-box").value;
         sendMessage(nickname, msg);
+        
+        setScrollEnd();
     }
 });
 
@@ -25,6 +29,8 @@ document.getElementById("send-btn").addEventListener("click", (e) => {
     var nickname = document.getElementById("nickname-box").value;
     var msg = document.getElementById("message-box").value;
     sendMessage(nickname, msg);
+    
+    setScrollEnd();
 })
 
 document.onload = OnDocLoad();
@@ -33,6 +39,10 @@ function OnDocLoad() {
     getMessages();
     window.setInterval(getMessages, 1000);
     window.setInterval(timer, 100);
+}
+
+function setScrollEnd() {
+    document.getElementById("chat-area").scrollTop = document.getElementById("chat-area").scrollHeight;
 }
 
 function timer() {
@@ -45,12 +55,11 @@ function sendMessage(nickname, msg) {
     if (diff < 1) {
         spamCount++;
         console.log(spamCount);
-        if (spamCount > 5) {
+        if (spamCount > 5 && banned == false) {
             banned = true;
+            alert("mal");
             sendToDatabase("Client", "User " + nickname + " kicked.");
-
         }
-
     }
 
     if (nickname !== "" && banned === false) {
@@ -72,7 +81,6 @@ function clearChat() {
     document.getElementById("chat-area").textContent = "";
 }
 
-
 function getMessages() {
     const dbref = database.ref(database.db);
 
@@ -88,6 +96,10 @@ function getMessages() {
             write(message.UserName, message.Content);
         });
 
+        if (firstLoad == false) {
+            firstLoad = true;
+            setScrollEnd();
+        }
         var lastIndex = Object.entries(msgs[0][1]).length - 1;
 
         if (ChatEvents((Object.entries(msgs[0][1])[lastIndex][1].Content)) == false) {
@@ -95,6 +107,7 @@ function getMessages() {
             document.getElementById("chat-area").style.backgroundImage = "none";
         }
     })
+
 }
 
 function setBgDefault() {
