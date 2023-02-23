@@ -1,4 +1,5 @@
 import database from './database.js'
+import ChatEvents from './ChatEvents.js'
 
 const sendBtn = document.getElementById("send-btn");
 const names = [];
@@ -47,7 +48,7 @@ function sendMessage(nickname, msg) {
         if (spamCount > 5) {
             banned = true;
             sendToDatabase("Client", "User " + nickname + " kicked.");
-    
+
         }
 
     }
@@ -86,10 +87,18 @@ function getMessages() {
 
             write(message.UserName, message.Content);
         });
-    })
 
+        var lastIndex = Object.entries(msgs[0][1]).length - 1;
+
+        if (ChatEvents((Object.entries(msgs[0][1])[lastIndex][1].Content)) == false) {
+
+            document.getElementById("chat-area").style.backgroundImage = "none";
+        }
+    })
 }
 
+function setBgDefault() {
+}
 
 function sendToDatabase(nickname, msg) {
     const random = Math.floor(Math.random() * 10000) + 1;

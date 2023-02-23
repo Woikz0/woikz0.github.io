@@ -1,0 +1,51 @@
+
+
+function checkWord(word) {
+    switch (word) {
+        case "samsa":
+            document.getElementById("chat-area").style.backgroundImage = "url('wow.gif')";
+            break;
+        case "efekaanakgul":
+            document.getElementById("chat-area").style.backgroundImage = "url('efe.jpg')";
+            break;
+        case "pipi":
+            document.getElementById("chat-area").style.backgroundImage = "url('anim.gif')";
+            break;
+        case "31":
+            document.getElementById("chat-area").style.backgroundImage = "url('qwe.jpg')";
+            break;
+        case "amk":
+            document.getElementById("chat-area").style.backgroundImage = "url('amk.webp')";
+            break;
+        case "mahmut":
+            document.getElementById("chat-area").style.backgroundImage = "url('goril.png')";
+            break;
+        case "buney":
+            document.getElementById("chat-area").style.backgroundImage = "url('unnamed.png')";
+            break;
+        case "bune":
+            document.getElementById("chat-area").style.backgroundImage = "url('unnamed.png')";
+            break;   
+        default:
+            return false;
+            break;
+    }
+
+    return true;
+}
+
+export default checkWord;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
