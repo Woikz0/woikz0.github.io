@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="./chat.js" type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -50,10 +51,9 @@
         padding: 10px;
         background-color: #0000ff;
         color: rgb(3, 226, 3);
-        align-items: flex-end;
-        white-space: pre-wrap;
+        
         background-size: contain;
-
+        gap: 10px;
 
         height: 750px;
         max-height: 450px;
@@ -61,6 +61,16 @@
         max-width: 850px;
         overflow-y: auto;
         scroll-behavior: smooth;
+    }
+
+    span
+    {
+        margin: 3px;
+        color: rgb(3, 226, 3);
+    }
+
+    #msgBox{
+        margin: 3px;
     }
 
     /* Designing for scroll-bar */
