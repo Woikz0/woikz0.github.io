@@ -15,6 +15,8 @@ var previusMsgTime = 0;
 var spamCount = 0;
 var firstLoad = false;
 
+var nickname;
+
 document.onload = OnDocLoad();
 
 function OnDocLoad() {
@@ -26,12 +28,14 @@ function OnDocLoad() {
 
     $.getJSON("https://api.ipify.org?format=json", function(data) {
     ip = data.ip;
+
+    Notification.requestPermission();
 })
 }
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-        var nickname = document.getElementById("nickname-box").value;
+        nickname = document.getElementById("nickname-box").value;
         var msg = document.getElementById("message-box").value;
         sendMessage(nickname, msg, color);
 
@@ -83,19 +87,31 @@ function sendMessage(nickname, msg, color) {
     console.log(previusMsgTime);
 }
 
+var ref = database.ref(database.db, 'Msgs/');
+
+    ref.onC
+
 function getMessages() {
     const dbref = database.ref(database.db);
-
     const msgsRef = database.child(dbref, "Msgs/");
 
     database.get(dbref, msgsRef).then((snapshot) => {
         var msgs = Object.entries(snapshot.val());
 
         Messager.ClearChat();
+
         Object.entries(msgs[0][1]).forEach(element => {
             const message = element[1];
+            var highlight = false;
+            
+            // const za = database.child(dbref, 'Msgs/' + element[0])
+            // console.log(za);
 
-            Messager.AddMessageSpan(message.UserName, message.Content, message.Color);
+            if(message.Content.includes("@"+nickname)) {
+                highlight = true;
+            }
+
+            Messager.AddMessageSpan(message.UserName, message.Content, message.Color, highlight);
         });
 
         if (firstLoad == false) {
@@ -109,9 +125,7 @@ function getMessages() {
             document.getElementById("chat-area").style.backgroundImage = "none";
         }
     })
-
 }
-
 
 function sendToDatabase(nickname, msg, color) {
 
@@ -121,7 +135,8 @@ function sendToDatabase(nickname, msg, color) {
         Color: color,
         Adress: ip,
         Screen: `${window.screen.width}x${window.screen.height}`,
-        UserAgent: window.navigator.userAgent
+        UserAgent: window.navigator.userAgent,
+        isNotificated: false
     });
 
 }

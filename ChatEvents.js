@@ -26,6 +26,12 @@ function checkWord(word) {
         case "bune":
             document.getElementById("chat-area").style.backgroundImage = "url('unnamed.png')";
             break;   
+        case "ccc":
+            document.getElementById("chat-area").style.backgroundImage = "url('ccc.jpg')";
+            break;   
+        case "efe2":
+            document.getElementById("chat-area").style.backgroundImage = "url('efe2.jpg')";
+            break;   
         default:
             return false;
             break;

@@ -5,11 +5,12 @@ function GetRandomColor()
     return colors[Math.floor(Math.random()*colors.length)];
 }
 
-function AddMessageSpan(nickname, msg, color) {
+function AddMessageSpan(nickname, msg, color, highlighted = false) {
     const parent = document.getElementById("chat-area");
-
+    
     const box = document.createElement("div");
     box.id = 'msgBox';
+    if(highlighted) box.style.backgroundColor = '#ffb83454';
 
     const nickSpan = document.createElement("span");
     nickSpan.textContent = `[${nickname}]`;
