@@ -1,6 +1,7 @@
 import database from './database.js'
 import ChatEvents from './ChatEvents.js'
 import Messager from './Messager.js'
+import Notify from './NotificationManager.js'
 
 
 const sendBtn = document.getElementById("send-btn");
@@ -21,12 +22,13 @@ document.onload = OnDocLoad();
 
 function OnDocLoad() {
     getMessages();
-    window.setInterval(getMessages, 1000);
+    //window.setInterval(getMessages, 1000);
     window.setInterval(timer, 100);
 
     color = Messager.GetRandomColor();
 
     $.getJSON("https://api.ipify.org?format=json", function (data) {
+        ip = data.ip;
 
         Notification.requestPermission();
     })
