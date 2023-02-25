@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./chat.js" type="module"></script>
+    <script src="./js/chat.js" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="container flex-vertical">
-        <h1>Non-Social Chat App</h1>
+        <div class="container" style="width: 100%; justify-content: space-between;">
+            <div onclick="location.href='./index.html';" style="width: fit-content; height: 30px; display: flex; align-items: center; margin: 10px;";>geri</div>
+            <h1>Non-Social Chat App</h1>
+            <div></div>
+        </div>
         <div id="chat-area">
         </div>
         <div id="input">
@@ -51,7 +55,7 @@
         padding: 10px;
         background-color: #0000ff;
         color: rgb(3, 226, 3);
-        
+
         background-size: contain;
         gap: 10px;
 
@@ -63,13 +67,12 @@
         scroll-behavior: smooth;
     }
 
-    span
-    {
+    span {
         margin: 3px;
         color: rgb(3, 226, 3);
     }
 
-    #msgBox{
+    #msgBox {
         margin: 3px;
     }
 

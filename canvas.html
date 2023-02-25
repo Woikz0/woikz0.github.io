@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Canvas</title>
+
+</head>
+
+<body>
+    <div class="container canvasarea flex-vertical">
+        <div class="container flex-vertical">
+            
+        <div class="container" style="width: 100%; justify-content: space-between;">
+            <div onclick="location.href='./index.html';" style="width: fit-content; height: 30px; display: flex; align-items: center; margin: 10px;";>geri</div>
+            <h1>Zort</h1>
+            <div></div>
+        </div>
+            <canvas id="canvas" style="background-color: blue; ">
+
+            </canvas>
+            <div id="colorpicker">
+                <div class="color" id="color1"></div>
+                <div class="color" id="color2"></div>
+                <div class="color" id="color3"></div>
+                <div class="color" id="color4"></div>
+                <div class="color" id="color5"></div>
+                <div class="color" id="color6"></div>
+                <div class="color" id="color7"></div>
+                <div class="color" id="color8"></div>
+                <div class="color" id="color9"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <style>
+        * {
+            overflow-x: hidden;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                height: 100%;
+            }
+        }
+
+        .canvasarea {
+            margin-top: 20px;
+        }
+
+        #colorpicker {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            background-color: black;
+            height: 40px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .color{
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: #a6ff00;
+        }
+
+        #color1{
+            background-color: #00ff73;
+        }
+
+        #color2{
+            background-color: #ff00b3;
+        }
+        #color3{
+            background-color: #ff0000;
+        }
+        #color4{
+            background-color: #c300ff;
+        }
+        #color5{
+            background-color: #a6ff00;
+        }
+        #color6{
+            background-color: #ffe600;
+        }
+        #color7{
+            background-color: #ff6f00;
+        }
+        #color8{
+            background-color: #000000;
+        }
+        #color9{
+            background-color: white;
+        }
+    </style>
+</body>
+
+
+<script src="./js/canvasScript.js" type="module"></script>
+
+</html>
