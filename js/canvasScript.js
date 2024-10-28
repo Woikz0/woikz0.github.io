@@ -11,6 +11,9 @@ var drawing = false;
 
 document.addEventListener("mousedown", start);
 document.addEventListener("mouseup", stop);
+
+document.addEventListener("touchstart", start);
+document.addEventListener("touchend", stop);
 window.addEventListener("resize", resize);
 
 window.addEventListener("load", function () {
@@ -24,6 +27,7 @@ window.addEventListener("load", function () {
       setColor(document.defaultView.getComputedStyle(e.target, null)['backgroundColor']);
     }
   })
+
 
 
 })
@@ -47,16 +51,26 @@ function resize() {
   canvas.height = 500;
 }
 function reposition(event) {
-  coord.x = event.clientX - canvas.offsetLeft;
-  coord.y = event.clientY - canvas.offsetTop;
+  if (event instanceof TouchEvent) {
+    const touch = event.touches[0];
+
+    coord.x = touch.clientX - canvas.offsetLeft;
+    coord.y = touch.clientY - canvas.offsetTop;
+  } else {
+    coord.x = event.clientX - canvas.offsetLeft;
+    coord.y = event.clientY - canvas.offsetTop;
+
+  }
 }
 function start(event) {
   document.addEventListener("mousemove", draw);
+  document.addEventListener("touchmove", draw);
   reposition(event);
   drawing = true;
 }
 function stop() {
   document.removeEventListener("mousemove", draw);
+  document.removeEventListener("touchmove", draw);
 
   var imgurl = canvas.toDataURL("image/png");
   sendToDatabase(imgurl);
@@ -73,8 +87,6 @@ function draw(event) {
   reposition(event);
   ctx.lineTo(coord.x, coord.y);
   ctx.stroke();
-
-
 }
 
 
