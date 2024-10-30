@@ -8,7 +8,7 @@ function checkWord(word) {
         case "efekaanakgul":
             document.getElementById("chat-area").style.backgroundImage = "url('efe.jpg')";
             break;
-        case "pipi":
+        case "owye":
             document.getElementById("chat-area").style.backgroundImage = "url('anim.gif')";
             break;
         case "31":
