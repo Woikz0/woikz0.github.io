@@ -21,34 +21,43 @@ window.addEventListener("load", function () {
   getImg();
   this.setInterval(updateCanvas, 100);
 
-  document.getElementById("colorpicker").addEventListener('click', function (e) {
+  document.getElementById("color-picker").addEventListener('click', function (e) {
 
     if (e.target.className == "color") {
       setColor(document.defaultView.getComputedStyle(e.target, null)['backgroundColor']);
     }
   })
 
-
-
 })
 
 function updateCanvas() {
   if (img != null && drawing === false) {
-    var imgs = document.createElement("img")
-    imgs.src = img;
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(imgs, 0, 0);
-
-    imgs.remove();
-
+    const imgElement = new Image();
+    imgElement.src = img;
+    imgElement.onload = function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
+    };
   }
 
 }
 
 
 function resize() {
-  canvas.width = 500;
-  canvas.height = 500;
+  const computedStyle = getComputedStyle(canvas);
+  const width = parseInt(computedStyle.width);
+  const height = parseInt(computedStyle.height);
+  const savedImage = canvas.toDataURL();
+
+  canvas.width = width;
+  canvas.height = height;
+
+
+  const tempImg = new Image();
+  tempImg.src = savedImage;
+  tempImg.onload = function () {
+    ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+  };
 }
 function reposition(event) {
   if (event instanceof TouchEvent) {
@@ -80,7 +89,7 @@ function stop() {
 }
 function draw(event) {
   ctx.beginPath();
-  ctx.lineWidth = 5;
+  ctx.lineWidth = canvas.width/100;
   ctx.lineCap = "round";
   ctx.strokeStyle = penColor;
   ctx.moveTo(coord.x, coord.y);
