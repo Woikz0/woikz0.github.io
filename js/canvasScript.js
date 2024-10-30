@@ -16,6 +16,10 @@ document.addEventListener("touchstart", start);
 document.addEventListener("touchend", stop);
 window.addEventListener("resize", resize);
 
+document.onload = () => {
+
+};
+
 window.addEventListener("load", function () {
   resize();
   getImg();
