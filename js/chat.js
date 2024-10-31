@@ -44,11 +44,11 @@ document.addEventListener('focus', (event) => {
 });
 
 
-window.addEventListener('resize', () => {
-
-    alert("resized")
-});
-
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+        alert("chanas")
+    });
+}
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         nickname = document.getElementById("nickname-box").value;
