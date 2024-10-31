@@ -50,6 +50,7 @@ if (window.visualViewport) {
         element.style.height = window.visualViewport.height;
     });
 }
+
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         nickname = document.getElementById("nickname-box").value;
