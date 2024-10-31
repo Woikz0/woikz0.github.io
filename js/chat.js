@@ -40,6 +40,10 @@ document.addEventListener('focusin', (event) => {
     }
 });
 
+window.addEventListener('resize', () => {
+    document.body.style.height = `${window.innerHeight}px`; // Body yüksekliğini ayarla
+});
+
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         nickname = document.getElementById("nickname-box").value;
