@@ -44,6 +44,12 @@ document.addEventListener('focus', (event) => {
 });
 
 
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+        const element = document.getElementById("main-container");
+        element.style.height = window.visualViewport.height;
+    });
+}
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
