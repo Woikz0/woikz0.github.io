@@ -35,16 +35,22 @@ function OnDocLoad() {
 }
 //prevent focusing
 document.addEventListener('focusin', (event) => {
-    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
-        document.body.style.zoom = '1';
-    }
+    event.preventDefault();
+    this.blur();
+});
+document.addEventListener('focus', (event) => {
+    event.preventDefault();
+    this.blur();
 });
 
-window.addEventListener('resize', () => {
-    const container = document.getElementById("main-container");
-    container.style.height = `${window.innerHeight}px`; // Container'ı güncelle
-    document.body.style.height = `${window.innerHeight}px`; // Body yüksekliğini ayarla
-});
+// window.addEventListener('resize', () => {
+//     const container = document.getElementById("main-container");
+//     container.style.height = `${window.innerHeight}px`; // Container'ı güncelle
+//     document.body.style.height = `${window.innerHeight}px`; // Body yüksekliğini ayarla
+
+//     console.log(window.innerHeight);
+    
+// });
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
