@@ -41,6 +41,8 @@ document.addEventListener('focusin', (event) => {
 });
 
 window.addEventListener('resize', () => {
+    const container = document.getElementById("main-container");
+    container.style.height = `${window.innerHeight}px`; // Container'ı güncelle
     document.body.style.height = `${window.innerHeight}px`; // Body yüksekliğini ayarla
 });
 
