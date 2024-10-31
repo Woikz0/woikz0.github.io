@@ -43,14 +43,11 @@ document.addEventListener('focus', (event) => {
     this.blur();
 });
 
-// window.addEventListener('resize', () => {
-//     const container = document.getElementById("main-container");
-//     container.style.height = `${window.innerHeight}px`; // Container'ı güncelle
-//     document.body.style.height = `${window.innerHeight}px`; // Body yüksekliğini ayarla
 
-//     console.log(window.innerHeight);
-    
-// });
+window.addEventListener('resize', () => {
+
+    alert("resized")
+});
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
