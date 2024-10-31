@@ -2,8 +2,9 @@
     margin: 0px;
 }
 
-body{ 
+body, html{ 
     background-color: black;
+    height: 100%;
 }
 
 video{
@@ -17,28 +18,10 @@ video{
 
 .container{
     display: flex;
-    justify-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(255, 255, 255, 0.726);
-}
-
-@media screen and (max-width: 600px){
-    .container{
-        flex-direction: column;
-    }
-
-    #info{
-        justify-content: center;
-        text-align: center;
-    }
-
-}
-@media screen and (min-width: 900px){
-    #name{
-        font-size: 70px;
-    }
-}
+}   
 
 #name{
     margin-top: 25px;

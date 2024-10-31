@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable:no">
     <title>Chat</title>
     <link rel="stylesheet" href="style.css">
     <script src="./js/chat.js" type="module"></script>
@@ -12,22 +12,17 @@
 </head>
 
 <body>
-    <div class="container flex-vertical">
-        <div class="container" style="width: 100%; justify-content: space-between;">
+    <div class="container flex-vertical" id="main-container">
+        <div class="container" style="width: 100%; justify-content: center;">
             <h1>Non-Social Chat App</h1>
-            <div></div>
         </div>
-        <div id="chat-area">
-        </div>
+        <div id="chat-area">a</div>
         <div id="input">
-            <input type="text" id="nickname-box" placeholder="Nicname" onkeypress="return event.charCode != 32;">
+            <input type="text" id="nickname-box" placeholder="Nickname" onkeypress="return event.charCode != 32;">
             <input type="text" id="message-box" placeholder="Message here...">
             <button value="->" id="send-btn">-></button>
-
-        </div>
+         </div>
     </div>
-
-
 </body>
 <style>
     * {
@@ -35,21 +30,8 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 
-    @media screen and (max-width: 600px) {
-        #chat-area {
-            height: 100%;
-            max-height: none;
-            width: 100%;
-        }
-
-        .container {
-            height: 100%;
-        }
-
-    }
 
     #chat-area {
-        display: flexbox;
         box-sizing: border-box;
         padding: 10px;
         background-color: #0000ff;
@@ -65,6 +47,7 @@
         overflow-y: auto;
         scroll-behavior: smooth;
     }
+    
 
     span {
         margin: 3px;
@@ -107,6 +90,7 @@
         margin: 1px;
         font-weight: bold;
         padding-left: 15px;
+        font-size: 16px;
     }
 
     input::placeholder {
@@ -120,6 +104,22 @@
 
     #send-btn {
         width: 50px;
+    }
+
+    @media (max-width: 600px) {
+        #main-container{
+            height: 100%;
+            flex: 1;
+        }
+
+        #chat-area {
+            flex: 1;
+            max-height: none;
+        }
+
+        #nickname-box{
+            max-width: 100px;
+        }
     }
 </style>
 

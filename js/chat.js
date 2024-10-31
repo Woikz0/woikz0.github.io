@@ -33,6 +33,12 @@ function OnDocLoad() {
         Notification.requestPermission();
     })
 }
+//prevent focusing
+document.addEventListener('focusin', (event) => {
+    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        document.body.style.zoom = '1';
+    }
+});
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
@@ -106,7 +112,7 @@ function getMessages() {
 
             var highlight = false;
 
-            if(message.Content.includes("@" + nickname)) highlight = true;
+            if (message.Content.includes("@" + nickname)) highlight = true;
 
             Messager.AddMessageSpan(message.UserName, message.Content, message.Color, highlight);
         });
