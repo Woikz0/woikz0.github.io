@@ -20,7 +20,7 @@ function AddMessageSpan(nickname, msg, color, time, highlighted = false) {
 
     const contentSpan = document.createElement("span");
     contentSpan.textContent = msg;
-    box.appendChild(contentSpan);
+    box.appendChild(contentSpan); 
 
     const timeSpan = document.createElement("span");
     timeSpan.textContent = time;
