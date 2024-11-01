@@ -97,8 +97,14 @@ function sendMessage(nickname, msg, color) {
         }
     }
 
-    Messager.AddMessageSpan(nickname, msg, color);
-    sendToDatabase(nickname, msg, color);
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const currentTime = `${hours}:${minutes}`;
+    
+
+    Messager.AddMessageSpan(nickname, msg, color, currentTime, false);
+    sendToDatabase(nickname, msg, color, currentTime);
 
     previusMsgTime = timerr;
     console.log(previusMsgTime);
@@ -125,7 +131,7 @@ function getMessages() {
 
             if (message.Content.includes("@" + nickname)) highlight = true;
 
-            Messager.AddMessageSpan(message.UserName, message.Content, message.Color, highlight);
+            Messager.AddMessageSpan(message.UserName, message.Content, message.Color, message.Time, highlight);
         });
 
         if (firstLoad == false) {
@@ -144,7 +150,7 @@ function getMessages() {
     })
 }
 
-function sendToDatabase(nickname, msg, color) {
+function sendToDatabase(nickname, msg, color, time) {
 
     database.set(database.push(database.ref(database.db, "Msgs/")), {
         UserName: nickname,
@@ -153,7 +159,8 @@ function sendToDatabase(nickname, msg, color) {
         Adress: ip,
         Screen: `${window.screen.width}x${window.screen.height}`,
         UserAgent: window.navigator.userAgent,
-        isNotificated: false
+        isNotificated: false,
+        Time: time
     });
 
 }

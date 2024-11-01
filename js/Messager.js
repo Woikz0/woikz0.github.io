@@ -1,11 +1,12 @@
 var colors = ['#00ff73', '#ff00b3', '#ff0000', '#c300ff', '#a6ff00', '#ffe600', '#ffc400']
+const timeSpanColor = '#006083'
 
 function GetRandomColor()
 {
     return colors[Math.floor(Math.random()*colors.length)];
 }
 
-function AddMessageSpan(nickname, msg, color, highlighted = false) {
+function AddMessageSpan(nickname, msg, color, time, highlighted = false) {
     const parent = document.getElementById("chat-area");
     
     const box = document.createElement("div");
@@ -21,6 +22,13 @@ function AddMessageSpan(nickname, msg, color, highlighted = false) {
     contentSpan.textContent = msg;
     box.appendChild(contentSpan);
 
+    const timeSpan = document.createElement("span");
+    timeSpan.textContent = time;
+    timeSpan.style.color = timeSpanColor;
+    timeSpan.style.fontSize = 'small';
+    box.appendChild(timeSpan);
+    console.log(time);
+    
     parent.appendChild(box);
 }
 
