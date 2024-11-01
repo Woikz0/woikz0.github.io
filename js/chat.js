@@ -125,7 +125,7 @@ function getMessages() {
 
         var message;
         msgs.forEach(element => {
-            message = element[1];
+            message = element[1]; 
 
             var highlight = false;
 
