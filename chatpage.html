@@ -14,9 +14,9 @@
 <body>
     <div class="container flex-vertical" id="main-container">
         <div class="container" style="width: 100%; justify-content: center;">
-            <h1>Retro Kingdom</h1>
+            <h1>Non-Social Chat App v2.0</h1>
         </div>
-        <div id="chat-area">v1.59</div>
+        <div id="chat-area">v2.0</div>
         <div id="input">
             <input type="text" id="nickname-box" placeholder="Nickname" onkeypress="return event.charCode != 32;">
             <input type="text" id="message-box" placeholder="Message here...">
@@ -51,12 +51,18 @@
     
 
     span {
-        margin: 3px;
+        margin: 1px;
         color: rgb(3, 226, 3);
     }
 
     #msgBox {
-        margin: 3px;
+        margin-left: 3px;
+        display: flex;
+    }
+
+    #msgBox>img{
+        max-width: 120px;
+        margin: 5px;
     }
 
     /* Designing for scroll-bar */
