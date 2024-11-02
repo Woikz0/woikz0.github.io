@@ -22,6 +22,10 @@ var gifkeywords = [
         key: "pain",
         path: "../media/gif/pain.png"
     },
+    {
+        key: "alenur",
+        path: "../media/gif/ale.png"
+    },
 ]
 
 function GetRandomColor() {
