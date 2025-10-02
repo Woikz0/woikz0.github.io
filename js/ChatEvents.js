@@ -5,8 +5,8 @@ function checkWord(word) {
         case "samsa":
             document.getElementById("chat-area").style.backgroundImage = "url('wow.gif')";
             break;
-        case "efekaanakgul":
-            document.getElementById("chat-area").style.backgroundImage = "url('efe.jpg')";
+        case "obama":
+            document.getElementById("chat-area").style.backgroundImage = "url('https://media.tenor.com/lOVqHrlKsT0AAAAj/obama-prism.gif')";
             break;
         case "owye":
             document.getElementById("chat-area").style.backgroundImage = "url('anim.gif')";
